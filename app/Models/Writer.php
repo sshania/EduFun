@@ -11,4 +11,8 @@ class Writer extends Model
         'title',
         'imagePath'
     ];
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
 }
