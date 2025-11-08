@@ -1,19 +1,23 @@
 @extends('layout.master')
-@section('title', 'EduFun')
+@section('title', 'Popular')
 
 @section('content')
 
-<div class="row mt-4">
-
-    <div class="hero" style="width: 100%; height: 300px; overflow: hidden;">
-        <img src="img/1.jpg" alt="image" 
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+<div class="row align-items-start border-0 bg-transparent p-2">
+    <div class="col-md-4 text-start">
+        <img src="{{ asset($writer->imagePath) }}" 
+             alt="{{ $writer->name }}" 
+             class="rounded-circle" 
+             style="width: 80px; height: 80px; object-fit: cover;">
     </div>
-
-    <div class="row mt-3 mb-3 text-center">
-        <h1>Articles</h1>
+    <div class="col-md-8 mt-4 text-start">
+        <h6 class="fw-semibold mb-1">{{ $writer->name }}</h6>
+        <p class="text-muted mb-0" style="font-size: 0.85rem;">{{ $writer->title }}</p>
     </div>
+</div>
 
+
+<div class="row">
     @foreach ($articles as $article)
         <div class="row mb-4 align-items-center p-3 bg-transparent rounded">
             <div class="col-md-4">
@@ -36,8 +40,6 @@
 
         </div>
     @endforeach
-
-
+    
 </div>
-
 @endsection

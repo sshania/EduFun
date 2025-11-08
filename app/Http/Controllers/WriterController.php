@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Writer; 
+use App\Models\Article; 
 
 class WriterController extends Controller
 {
@@ -13,8 +14,4 @@ class WriterController extends Controller
         return view('writers', compact('writers'));
     }
 
-
-    public function create(){
-        
-    }
 }
