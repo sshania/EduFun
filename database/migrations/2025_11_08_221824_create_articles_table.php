@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('writer_id')->constrained('writers')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->String('title');
             $table->String('image');
             $table->date('date');
             $table->text('details');
-            $table->enum('category', ['SE', 'IM']);
             $table->timestamps();
         });
     }

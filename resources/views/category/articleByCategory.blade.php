@@ -1,10 +1,10 @@
 @extends('layout.master')
-@section('title', 'Popular')
+@section('title', 'Articles By Category')
 
 @section('content')
 
 <div class="container mt-4">
-    <h1 class="mb-4">Popular</h1>
+    <h1 class="mb-4">{{ $articles->first()->category->name ?? '' }}</h1>
 
     <div class="row">
         @foreach ($articles as $article)
@@ -26,20 +26,10 @@
                 <p>{{ Str::limit($article->details, 200) }}</p>
                 <a href="{{ route('article.details', $article->id) }}" class="btn btn-primary btn-sm">Read More</a>
             </div>
+
         </div>
     @endforeach
     </div>
-
-    {{-- <div class="row justift-content-center text-center bg-transparent"> 
-        {{ $articles->links() }} 
-    </div> --}}
-
-    <div class="d-flex justify-content-center mt-4">
-        {{ $articles->links('pagination::bootstrap-5') }}
-    </div>
-
-
-
 </div>
 
 @endsection

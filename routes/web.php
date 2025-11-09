@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 
 Route::get("/", [ArticleController::class, 'get3Article'])->name("home");
 
@@ -11,21 +12,16 @@ Route::get('/aboutus', function(){
 })->name("aboutus");
 
 Route::get('writers', [WriterController::class, 'index'])->name("writers");
-
-Route::get('popular', function () {
-    return view('popular');
-})->name("popular");
+Route::get('popular', [ArticleController::class, 'pagenation'])->name("popular");
 
 Route::get('/articlesByWriter/{id}', [ArticleController::class, 'getArticleByWriter'])->name('article.byWriter');
-
 Route::get('/articles/{id}', [ArticleController::class, 'details'])->name('article.details');
 
 
 Route::prefix('/category')->group(function () {
 
-    Route::get('/', )->name('category');
+    Route::get('/', [ArticleController::class, 'index'] )->name('category');
 
-    Route::get('SoftwareEngineering', [UserController::class, 'index'])->name('category.softwareEngineering');
-    Route::get('InteractiveMultimedia', [UserController::class, 'index'])->name('category.interactiveMultimedia');
-
+    Route::get('/{id}', [ArticleController::class, 'getArticleByCat'])->name('articleByCategory');
+    
 });

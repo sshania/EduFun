@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker; 
 use App\Models\Article; 
 use App\Models\Writer;
+use App\Models\Category;
 
 class ArticleSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class ArticleSeeder extends Seeder
         $faker = Faker::create(); 
 
         $writers = Writer::all();
+        $categories = Category::all();
         $arrImagePath = [
             'img/1.jpg',
             'img/2.jpg',
@@ -38,7 +40,7 @@ class ArticleSeeder extends Seeder
                 'details'=>$faker->paragraph(10),
                 'image'=> $faker->randomElement($arrImagePath),
                 'date' => $faker->dateTimeBetween('2025-01-01', '2025-12-31')->format('Y-m-d'),
-                'category' => $faker->randomElement($array=['SE', 'IM']),
+                'category_id' => $categories->random()->id,
             ]);
         }
     }

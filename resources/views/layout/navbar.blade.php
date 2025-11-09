@@ -21,8 +21,8 @@
                 Category
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('category.interactiveMultimedia') }}">Interactive Multimedia</a></li>
-                <li><a class="dropdown-item" href="{{route('category.softwareEngineering')}}">Sofware Engineering</a></li>
+                <li><a class="dropdown-item" href="{{ route('articleByCategory', 1) }}">Interactive Multimedia</a></li>
+                <li><a class="dropdown-item" href="{{ route('articleByCategory', 2) }}">Sofware Engineering</a></li>
             </ul>
             </li>
             

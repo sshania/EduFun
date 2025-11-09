@@ -12,10 +12,15 @@ class Article extends Model
         'date',
         'details',
         'writer_id',
-        'category'
+        'category_id'
     ];
 
     public function writer() {
         return $this->belongsTo(Writer::class);
     }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+    
 }

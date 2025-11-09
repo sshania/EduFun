@@ -35,6 +35,16 @@ class ArticleController extends Controller
     }
 
     public function getArticleByCat($cat){
-        $articles = Article::where('category', $cat)->get();
+        $articles = Article::with('category')->where('category_id', $cat)->get();
+   
+        return view('category.articleByCategory', compact('articles'));
+    }
+
+    public function pagenation(){
+        $articles = Article::paginate(3);
+
+        return view('popular', compact('articles'));
+        
+
     }
 }
